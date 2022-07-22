@@ -9,6 +9,23 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <style>
+      body.debug .container,
+      body.debug .container-fluid {
+        outline: 2px double blue;
+        outline-offset: -2px;
+      }
+
+      body.debug .row {
+        outline: 2px dashed red;
+        outline-offset: -2px;
+      }
+
+      body.debug [class*="col-"] {
+        outline: 2px dotted forestgreen;
+        outline-offset: -3px;
+      }
+    </style>
     <link
       rel="stylesheet"
       href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"
@@ -20,15 +37,15 @@
     />
     <title>Clicker</title>
   </head>
-  <body>
+  <body class="debug">
     <header class="container-fluid">
       <div class="row">
         <h4 class="col-3">
           Total Cheese
           <h3 class="" id="cheesemined"></h3>
         </h4>
-        <h4 class="col-3">
-          Auto Collected
+        <h4 class="col-5">
+          Collected Every 3 Sec
           <h4 id="autoSec"></h4>
         </h4>
         <h4 class="col-3">
@@ -38,7 +55,7 @@
       </div>
     </header>
     <main>
-      <div class="bg-secondary text-center">
+      <div class="bg-secondary text-center p-3">
         <img
           class="img-fluid"
           onclick="clickCheese()"
@@ -80,11 +97,29 @@
             Buy
           </button>
         </div>
-        <div class="row">
+        <div class="row pb-4">
           <div id="droneprice" class="col-3 text-center"></div>
           <div id="minerprice" class="col-3 text-center"></div>
           <div id="drillprice" class="col-3 text-center"></div>
           <div id="colonyprice" class="col-3 text-center"></div>
+        </div>
+        <div class="row">
+          <div class="col-3 text-center bg-danger">Efficiency Up</div>
+          <div class="col-3 text-center bg-danger">Efficiency Up</div>
+          <div class="col-3 text-center bg-light">Efficiency Up</div>
+          <div class="col-3 text-center bg-light">Efficiency Up</div>
+        </div>
+        <div class="row text-center">
+          <div class="col-3" id="droneeff">0</div>
+          <div class="col-3" id="minereff">0</div>
+          <div class="col-3" id="drilleff">0</div>
+          <div class="col-3" id="colonyeff">0</div>
+        </div>
+        <div class="row">
+          <button class="col-3 rounded btn-warning">Buy</button>
+          <button class="col-3 rounded btn-warning">Buy</button>
+          <button class="col-3 rounded btn-warning">Buy</button>
+          <button class="col-3 rounded btn-warning">Buy</button>
         </div>
       </section>
     </main>

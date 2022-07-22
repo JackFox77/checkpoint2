@@ -12,6 +12,18 @@ const autoupgrades = {
         price: 100,
         quantity: 0,
         multiplier: 10,
+    },
+    factory: {
+        startprice: 1000,
+        price: 1000,
+        quantity: 0,
+        multiplier: 75
+    },
+    transport:{
+        startprice: 5000,
+        price: 5000,
+        quantity: 0,
+        multiplier: 300
     }
 }
 
@@ -28,8 +40,36 @@ const clickupgrades = {
         price: 100,
         quantity: 0,
         multiplier:3
+    },
+    spaceship: {
+        startprice:300,
+        price: 300,
+        quantity: 0,
+        multiplier:10
+    },
+    assistant: {
+        startprice:1000,
+        price: 1000,
+        quantity: 0,
+        multiplier:25
     }
 }
+
+const efficiencyUp={
+    autoupsdrone: { 
+        startprice:100,
+        price:100,
+        quantity: 0,
+        multiplier: autoupgrades.drone.multiplier*2
+    },
+    autoupsminer: {
+        startprice:100,
+        price:100,
+        quantity: 0,
+        multiplier: autoupgrades.miner.multiplier*2
+    }
+}
+
 
 let cheese=0
 
@@ -98,6 +138,18 @@ function buyClickUp(name) {
     update()
     drawPerclick()
 }
+
+function incEfficiency(name) {
+    let upgrade = autoupgrades[name]
+    if (cheese >= upgrade.price) {
+        upgrade.quantity += 1
+        cheese -= upgrade.price
+        let tax = upgrade.startprice * 5
+        upgrade.price += tax
+        
+    }
+}
+
 
 // function buyColony() {
 //     let quantity = clickupgrades.colony.quantity
@@ -185,7 +237,7 @@ function update() {
     drawPrice()
     drawtotalCollected()
     drawCheese()
-    
+
 }
 drawPerclick()
 update()
@@ -202,6 +254,7 @@ function collectAutominer() {
     drawCheese()
 }
 
+
 setInterval(collectAutodrone, 3000)
-setInterval(collectAutominer, 5000)
+setInterval(collectAutominer, 3000)
 setInterval(update,1000)
