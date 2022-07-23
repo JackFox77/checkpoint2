@@ -139,16 +139,19 @@ function buyClickUp(name) {
     drawPerclick()
 }
 
-function incEfficiency(name) {
-    let upgrade = autoupgrades[name]
-    if (cheese >= upgrade.price) {
-        upgrade.quantity += 1
-        cheese -= upgrade.price
-        let tax = upgrade.startprice * 5
-        upgrade.price += tax
-        
+function incEfficiencydrone() {
+    if (cheese >= efficiencyUp.autoupsdrone.price) {
+        efficiencyUp.autoupsdrone.quantity += 1
+        cheese -= efficiencyUp.autoupsdrone.price
+        let tax = efficiencyUp.autoupsdrone.startprice * 5
+        autoupgrades.drone.multiplier *= autoupgrades.drone.multiplier * 1.125
+        // note ParseInt(2.675.toFixed(2))
     }
+    else (window.alert('not enough gouda'))
+    update()
 }
+
+
 
 
 // function buyColony() {
