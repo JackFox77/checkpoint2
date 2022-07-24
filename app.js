@@ -104,37 +104,6 @@ function buyAutoUp(name) {
     update()
 }
 
-// function buyDrone() {
-//     let drone = autoupgrades.drone.quantity
-//     let droneprice = autoupgrades.drone.price
-//     if(cheese>= droneprice){
-//         autoupgrades.drone.quantity += 1
-//         cheese -= droneprice
-//         let tax = autoupgrades.drone.startprice*.25
-//         autoupgrades.drone.price+=tax
-//     }
-//     else (window.alert('not enough mozzarella'))
-//     console.log('drone')
-//     drawDrone()
-//     drawCheese()
-//     drawtotalCollected()
-// }
-
-// function buyMiner() {
-//     let quantity = autoupgrades.miner.quantity
-//     let price = autoupgrades.miner.price
-//     if (cheese >= price) {
-//         autoupgrades.miner.quantity += 1
-//         cheese -= price
-//         let tax = autoupgrades.miner.startprice*.25
-//         autoupgrades.miner.price+=tax
-//     }
-//     else (window.alert('not enough monterey'))
-//     console.log('miner');
-//     drawMiner()
-//     drawCheese()
-//     drawtotalCollected()
-// }
 
 function buyClickUp(name) {
     let upgrade = clickupgrades[name]
@@ -156,7 +125,7 @@ function incEfficiencydrone() {
         cheese -= efficiencyUp.autoupsdrone.price
         let tax = efficiencyUp.autoupsdrone.startprice * 15
         efficiencyUp.autoupsdrone.price+=tax
-        autoupgrades.drone.multiplier *= autoupgrades.drone.multiplier * 1.125
+        autoupgrades.drone.multiplier *= 1.125
         // note ParseInt(2.675.toFixed(2))
     }
     else (window.alert('not enough gouda'))
@@ -169,7 +138,7 @@ function incEfficiencyminer() {
         cheese -= efficiencyUp.autoupsminer.price
         let tax = efficiencyUp.autoupsminer.price * 15
         efficiencyUp.autoupsminer.price += tax
-        autoupgrades.miner.multiplier*= autoupgrades.miner.multiplier*1.125
+        autoupgrades.miner.multiplier*=1.125
     }
     else (window.alert('not enough gouda'))
     update()
