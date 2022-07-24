@@ -110,10 +110,10 @@
           <div class="col-3 text-center bg-light">Efficiency Up</div>
         </div>
         <div class="row text-center">
-          <div class="col-3" id="droneeff">0</div>
-          <div class="col-3" id="minereff">0</div>
-          <div class="col-3" id="drilleff">0</div>
-          <div class="col-3" id="colonyeff">0</div>
+          <div class="col-3" id="droneeff"></div>
+          <div class="col-3" id="minereff"></div>
+          <div class="col-3" id="drilleff"></div>
+          <div class="col-3" id="colonyeff"></div>
         </div>
         <div class="row">
           <button
@@ -128,14 +128,24 @@
           >
             Buy
           </button>
-          <button class="col-3 rounded btn-warning">Buy</button>
-          <button class="col-3 rounded btn-warning">Buy</button>
+          <button
+            onclick="incEfficiencydrill()"
+            class="col-3 rounded btn-warning"
+          >
+            Buy
+          </button>
+          <button
+            onclick="incEfficiencycolony()"
+            class="col-3 rounded btn-warning"
+          >
+            Buy
+          </button>
         </div>
         <div class="row">
           <div id="droneff" class="col-3 text-center"></div>
           <div id="minerff" class="col-3 text-center"></div>
-          <div class="col-3 text-center"></div>
-          <div class="col-3 text-center"></div>
+          <div id="drillff" class="col-3 text-center"></div>
+          <div id="colonyff" class="col-3 text-center"></div>
         </div>
       </section>
     </main>

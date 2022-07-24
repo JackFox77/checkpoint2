@@ -60,13 +60,24 @@ const efficiencyUp={
         startprice:1000,
         price:1000,
         quantity: 0,
-        multiplier: autoupgrades.drone.multiplier*1.25
     },
     autoupsminer: {
         startprice:3000,
         price:3000,
         quantity: 0,
-        multiplier: autoupgrades.miner.multiplier*2
+    }
+}
+
+const clickeffup = {
+    clickupdrill:{
+        startprice: 1500,
+        price: 1500,
+        quantity: 0,
+    },
+    clickupcolony: {
+        startprice: 4000,
+        price: 4000,
+        quantity:0
     }
 }
 
@@ -164,44 +175,31 @@ function incEfficiencyminer() {
     update()
 }
 
+function incEfficiencydrill() {
+    if (cheese >= clickeffup.clickupdrill.price) {
+        clickeffup.clickupdrill.quantity += 1
+        cheese -= clickeffup.clickupdrill.price
+        let tax = clickeffup.clickupdrill.price * 15
+        clickeffup.clickupdrill.price += tax
+         clickupgrades.drill.multiplier *= 1.125
+    }
+    else (window.alert('not enough gouda'))
+    update()
+    drawPerclick()
+}
 
-
-// function buyColony() {
-//     let quantity = clickupgrades.colony.quantity
-//     let price = clickupgrades.colony.price
-//     if (cheese >= price) {
-//         clickupgrades.colony.quantity += 1
-//         cheese -= price
-//         let tax = clickupgrades.colony.startprice*.25
-//         clickupgrades.colony.price+=tax
-//     }
-//     else (window.alert('not enough gouda'))
-//     console.log('colony')
-//     drawColony()
-//     drawCheese()
-//     drawPerclick()
-// }
-
-
-
-// function buyDrill() {
-//     let drill = clickupgrades.drill.quantity
-//     let drillprice = clickupgrades.drill.price
-//     if (cheese >= drillprice) {
-//         clickupgrades.drill.quantity += 1
-//         cheese -= drillprice
-//         let tax = clickupgrades.drill.startprice*.25
-//         clickupgrades.drill.price+=tax
-//     }
-//     else (window.alert('not enough cheddar'))
-//     console.log('drill');
-//     drawDrill()
-//     drawCheese()
-//     drawPerclick()
-// }
-
-
-
+function incEfficiencycolony() {
+    if (cheese >= clickeffup.clickupcolony.price) {
+        clickeffup.clickupcolony.quantity += 1
+        cheese -= clickeffup.clickupcolony.price
+        let tax = clickeffup.clickupcolony.price * 15
+        clickeffup.clickupcolony.price+=tax
+        clickupgrades.colony.multiplier*=1.125
+    }
+    else (window.alert('not enough gouda'))
+    update()
+    drawPerclick()
+}
 
 function drawCheese() {
     document.getElementById('cheesemined').innerText = cheese
@@ -224,13 +222,24 @@ function drawColony() {
     document.getElementById('colony').innerText= clickupgrades.colony.quantity
 }
 
+function drawEff1() {
+    document.getElementById('droneeff').innerText = efficiencyUp.autoupsdrone.quantity
+    document.getElementById('minereff').innerText = efficiencyUp.autoupsminer.quantity
+    document.getElementById('drilleff').innerText = clickeffup.clickupdrill.quantity
+    document.getElementById('colonyeff').innerText= clickeffup.clickupcolony.quantity
+}
+
+
+
 function drawPrice() {
     document.getElementById('droneprice').innerText = autoupgrades.drone.price
     document.getElementById('drillprice').innerText = clickupgrades.drill.price
     document.getElementById('colonyprice').innerText = clickupgrades.colony.price
     document.getElementById('minerprice').innerText = autoupgrades.miner.price
     document.getElementById('droneff').innerText = efficiencyUp.autoupsdrone.price
-    document.getElementById('minerff').innerText= efficiencyUp.autoupsminer.price
+    document.getElementById('minerff').innerText = efficiencyUp.autoupsminer.price
+    document.getElementById('drillff').innerText = clickeffup.clickupdrill.price
+    document.getElementById('colonyff').innerText= clickeffup.clickupcolony.price
 
 }
 
@@ -254,7 +263,7 @@ function update() {
     drawPrice()
     drawtotalCollected()
     drawCheese()
-
+    drawEff1()
 }
 drawPerclick()
 update()
