@@ -57,14 +57,14 @@ const clickupgrades = {
 
 const efficiencyUp={
     autoupsdrone: { 
-        startprice:100,
-        price:100,
+        startprice:1000,
+        price:1000,
         quantity: 0,
-        multiplier: autoupgrades.drone.multiplier*2
+        multiplier: autoupgrades.drone.multiplier*1.25
     },
     autoupsminer: {
-        startprice:100,
-        price:100,
+        startprice:3000,
+        price:3000,
         quantity: 0,
         multiplier: autoupgrades.miner.multiplier*2
     }
@@ -143,7 +143,8 @@ function incEfficiencydrone() {
     if (cheese >= efficiencyUp.autoupsdrone.price) {
         efficiencyUp.autoupsdrone.quantity += 1
         cheese -= efficiencyUp.autoupsdrone.price
-        let tax = efficiencyUp.autoupsdrone.startprice * 5
+        let tax = efficiencyUp.autoupsdrone.startprice * 15
+        efficiencyUp.autoupsdrone.price+=tax
         autoupgrades.drone.multiplier *= autoupgrades.drone.multiplier * 1.125
         // note ParseInt(2.675.toFixed(2))
     }
@@ -151,6 +152,17 @@ function incEfficiencydrone() {
     update()
 }
 
+function incEfficiencyminer() {
+    if (cheese >= efficiencyUp.autoupsminer.price) {
+        efficiencyUp.autoupsminer.quantity += 1
+        cheese -= efficiencyUp.autoupsminer.price
+        let tax = efficiencyUp.autoupsminer.price * 15
+        efficiencyUp.autoupsminer.price += tax
+        autoupgrades.miner.multiplier*= autoupgrades.miner.multiplier*1.125
+    }
+    else (window.alert('not enough gouda'))
+    update()
+}
 
 
 
@@ -217,6 +229,8 @@ function drawPrice() {
     document.getElementById('drillprice').innerText = clickupgrades.drill.price
     document.getElementById('colonyprice').innerText = clickupgrades.colony.price
     document.getElementById('minerprice').innerText = autoupgrades.miner.price
+    document.getElementById('droneff').innerText = efficiencyUp.autoupsdrone.price
+    document.getElementById('minerff').innerText= efficiencyUp.autoupsminer.price
 
 }
 
